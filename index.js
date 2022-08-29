@@ -32,17 +32,15 @@ function myMap(collection, callBack){
 }
 
 function myReduce(collection, callBack, acc){
-    let newCol = standardInput(collection)
-    if(!acc){
-        acc = newCol[0]
-        newCol = newCol.slice[1]
+    let newCollection = standardInput(collection);
+    if(acc === undefined){
+        acc = newCollection[0]
+        newCollection = newCollection.slice(1) 
     }
-    else{
-        for(let i; i < newCol.length; i++){
-            acc = callBack(acc, newCol[i], newCol)
-        }
-        return acc
+    for(let i = 0; i < newCollection.length; i++){
+        acc = callBack(acc, newCollection[i], newCollection)
     }
+    return acc
 }
 
 function myFind(collection, predicate){
@@ -72,10 +70,10 @@ function myFilter(collection, predicate){
 }
 
 function mySize(collection){
-
+    return standardInput(collection).length
 }
 
-function myFirst(array, [n]){
+function myFirst(array, n){
     let result;
     if(n){
         result = array.slice(0, n)
@@ -86,13 +84,13 @@ function myFirst(array, [n]){
     return result
 }
 
-function myLast(array, [n]){
+function myLast(array, n){
     let result;
     if(n){
         result = array.slice(array.length-n, array.length)
     }
     else{
-        result = array[array.lenth-1]
+        result = array[array.length-1]
     }
     return result
 }
